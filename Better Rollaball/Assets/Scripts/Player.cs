@@ -40,17 +40,10 @@ public class Player : MonoBehaviour
         IsGrounded();
     }
 
-    public void IsGrounded()
+    public bool IsGrounded()
     {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, Vector3.down, out hit, groundDistance))
-        {
-            GetComponent<Renderer>().sharedMaterial.color = Color.red;
-        }
-        else
-        {
-            GetComponent<Renderer>().sharedMaterial.color = Color.white;
-        }
+        return Physics.Raycast(transform.position, Vector3.down, out hit, groundDistance);
     }
 
     public void Collect()

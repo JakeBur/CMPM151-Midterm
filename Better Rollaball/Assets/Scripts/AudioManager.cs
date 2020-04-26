@@ -29,13 +29,15 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float speed = Mathf.Clamp((player.GetComponent<Rigidbody>().velocity.magnitude - minSpeed) / maxSpeed, 0, 1);
         // send data to osc
-        OSCHandler.Instance.SendMessageToClient("pd", "/unity/speed", Mathf.Clamp((player.GetComponent<Rigidbody>().velocity.magnitude - minSpeed) / maxSpeed, 0, 1));
+        OSCHandler.Instance.SendMessageToClient("pd", "/unity/speed", speed);
+        OSCHandler.Instance.SendMessageToClient("pd", "/unity/groundSpeed", player.IsGrounded() ? speed : 0);
     }
 
     private void CollectObject(int score)
     {
-        OSCHandler.Instance.SendMessageToClient("pd", "/unity/collectable", score);
+        OSCHandler.Instance.SendMessageToClient("pd", "/unity/collectable", score-1);
     }
 
     private void Impact()
