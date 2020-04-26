@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
 
         // use osc to listen on localhost
         OSCHandler.Instance.Init();
-        OSCHandler.Instance.SendMessageToClient("pd", "/unity/trigger", "ready");
+        OSCHandler.Instance.SendMessageToClient("pd", "/unity/initialize", "ready");
     }
 
     // Update is called once per frame
