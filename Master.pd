@@ -3,7 +3,7 @@
 #X text 164 68 2 Set Ports (sending and listening);
 #X text 164 87 3 Set OSC Addresses (routing osc data;
 #X text 155 26 Key Settings;
-#N canvas 541 97 781 776 oscReceive 1;
+#N canvas 541 97 781 776 oscReceive 0;
 #X obj 55 184 netreceive -u -b;
 #X msg 78 143 listen 0;
 #X text 152 143 stop listening;
@@ -34,7 +34,7 @@
 #X obj 521 475 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 191 433 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 55 432 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 280 440 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -71,17 +71,17 @@
 #X connect 31 0 30 1;
 #X connect 32 0 18 0;
 #X restore 43 116 pd oscReceive;
-#X obj 47 36 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 47 36 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X msg 47 61 \; pd dsp \$1;
-#N canvas 413 211 1083 664 music 1;
+#N canvas 413 211 1083 664 music 0;
 #X obj 52 888 osc~;
 #X obj 56 832 mtof;
 #X obj 55 1177 dac~;
 #X floatatom 57 800 5 0 0 0 - - -;
 #X obj 62 1010 *~;
 #X obj 181 810 vsl 15 128 0 0.1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1449 1;
+-1 -1 0 1;
 #X obj 56 944 *~;
 #X obj 115 848 mtof;
 #X floatatom 116 816 5 0 0 0 - - -;
@@ -92,7 +92,7 @@
 #X floatatom 357 901 5 0 0 0 - - -;
 #X obj 351 1086 *~;
 #X obj 492 908 vsl 15 128 0 0.1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1449 1;
+-1 -1 0 1;
 #X obj 351 1051 *~;
 #X obj 410 955 mtof;
 #X floatatom 411 923 5 0 0 0 - - -;
@@ -116,7 +116,7 @@
 #X floatatom 817 874 5 0 0 0 - - -;
 #X obj 824 1102 *~;
 #X obj 959 893 vsl 15 128 0 0.1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1449 1;
+-1 -1 0 1;
 #X obj 877 940 mtof;
 #X floatatom 878 908 5 0 0 0 - - -;
 #X obj 822 1223 *~;
@@ -313,10 +313,10 @@ counter without libraries??;
 #X connect 104 0 98 0;
 #X restore 603 47 pd music;
 #X obj 622 79 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 800 1;
+-1 -1 0 1;
 #X obj 618 275 s musicVolume;
 #X obj 528 117 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2300 1;
+-1 -1 0 1;
 #X text 495 92 master volume;
 #X obj 719 275 s collisionVolume;
 #X obj 837 274 s rollVolume;
@@ -328,60 +328,77 @@ counter without libraries??;
 #X obj 620 223 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 723 77 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1900 1;
+-1 -1 0 1;
 #X obj 720 247 *;
 #X obj 721 221 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 840 77 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1800 1;
+-1 -1 0 1;
 #X obj 837 247 *;
 #X obj 838 221 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 932 76 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2000 1;
+-1 -1 0 1;
 #X obj 929 246 *;
 #X obj 930 220 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X text 499 4 Volume settings;
-#N canvas 425 307 1051 726 landing 1;
-#X obj 48 618 dac~;
-#X obj 410 200 osc~;
-#X floatatom 409 164 5 0 0 0 - - -;
-#X floatatom 202 174 5 0 0 0 - - -;
-#X obj 192 214 osc~;
-#X obj 91 420 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 344 1;
-#X obj 51 547 *~;
-#X obj 93 390 r collisionVolume;
-#X obj 57 366 *~;
-#X obj 146 347 vline~;
-#X obj 88 130 noise~;
-#X obj 104 249 *~;
-#X floatatom 146 133 5 0 0 0 - - -;
-#X obj 52 567 *~;
-#X obj 119 197 *~;
-#X msg 87 102 seed 10;
-#X msg 154 296 1 10 \, 0.2 10 50 \, 0 50 100;
-#X obj 404 265 *~;
-#X obj 393 602 dac~;
-#X obj 449 399 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 413 1;
-#X obj 405 522 *~;
-#X obj 448 341 r collisionVolume;
-#X obj 448 368 * 1.2;
-#X text 64 73 mix noise with osc;
-#X msg 411 136 -42;
-#X obj 411 105 loadbang;
-#X obj 479 241 vline~;
-#X msg 487 190 1 10 \, 0.2 10 50 \, 0 50 100;
-#X obj 161 253 r impact;
-#X obj 491 137 r impact;
-#X text 397 29 bass layer;
-#X msg 194 80 10;
-#X msg 227 129 -25;
-#X obj 203 53 loadbang;
-#X text 12 9 impact sound;
-#X text 66 29 noise layer;
+#N canvas -8 -8 1920 997 landing 1;
+#X obj 291 676 dac~;
+#X obj 698 250 osc~;
+#X floatatom 697 214 5 0 0 0 - - -;
+#X floatatom 402 199 5 0 0 0 - - -;
+#X obj 403 234 osc~;
+#X obj 379 459 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 297 597 *~;
+#X obj 377 425 r collisionVolume;
+#X obj 292 388 *~;
+#X obj 356 366 vline~;
+#X obj 213 165 noise~;
+#X obj 301 271 *~;
+#X floatatom 296 171 5 0 0 0 - - -;
+#X obj 296 631 *~;
+#X obj 244 232 *~;
+#X msg 212 137 seed 10;
+#X msg 364 315 1 10 \, 0.2 10 50 \, 0 50 100;
+#X obj 692 315 *~;
+#X obj 681 652 dac~;
+#X obj 737 449 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 693 572 *~;
+#X obj 736 391 r collisionVolume;
+#X obj 736 418 * 1.2;
+#X text 189 108 mix noise with osc;
+#X msg 699 186 -42;
+#X obj 699 155 loadbang;
+#X obj 780 260 vline~;
+#X msg 788 209 1 10 \, 0.2 10 50 \, 0 50 100;
+#X obj 371 272 r impact;
+#X obj 792 156 r impact;
+#X text 687 125 bass layer;
+#X msg 299 142 10;
+#X msg 401 164 -25;
+#X obj 350 111 loadbang;
+#X text 494 43 impact sound;
+#X text 278 73 noise layer;
+#X text 54 139 Creates "random" number;
+#X text 109 273 Frequency values are combined;
+#X text 402 511 Volume bar for noise layer;
+#X text 164 604 Gives volume bar twice the influence;
+#X text 838 255 Takes the number set selected as time to ramp up and
+ramp down;
+#X text 532 315 Number sets;
+#X text 956 212 Number sets;
+#X text 854 143 Looks to see when impact variable is called for in
+Unity game;
+#X text 591 193 Frequency value;
+#X text 725 316 Mixes Frequency with duration.;
+#X text 760 511 Volume bar for bass layer;
+#X text 433 265 Looks to see when impact variable is called for in
+Unity game;
+#X text 407 359 Takes the number set selected as time to ramp up and
+ramp down;
 #X connect 1 0 17 0;
 #X connect 2 0 1 0;
 #X connect 3 0 4 0;
@@ -417,7 +434,7 @@ counter without libraries??;
 #X connect 33 0 31 0;
 #X connect 33 0 32 0;
 #X restore 699 46 pd landing;
-#N canvas 369 453 1195 433 roll 1;
+#N canvas 369 453 1195 433 roll 0;
 #X obj 482 101 soundfiler;
 #X obj 483 45 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -463,14 +480,14 @@ counter without libraries??;
 #X connect 19 0 8 0;
 #X connect 19 0 8 1;
 #X restore 826 47 pd roll;
-#N canvas 399 349 1193 753 collect 1;
+#N canvas 399 349 1193 753 collect 0;
 #X floatatom 469 396 5 0 0 0 - - -;
 #X obj 470 495 *~;
 #X obj 219 731 dac~;
 #X obj 659 453 vline~;
 #X text 701 327 volume control;
 #X obj 675 239 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 362 1;
+-1 -1 0 1;
 #X text 50 268 uses a key selector to pick a hert/frequency to play
 ;
 #X text 715 445 using vline to cleanly transition between volume;
