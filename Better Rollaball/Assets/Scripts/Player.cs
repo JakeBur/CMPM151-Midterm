@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public int score;
 
     public event Action<int> OnCollect;
+    public event Action OnImpact;
 
     private Vector3 spawnLocation;
     private CameraMaster cam;
@@ -70,5 +71,10 @@ public class Player : MonoBehaviour
         {
             transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, transform.eulerAngles + new Vector3(0, mouseDelta.x, 0), turnRate);
         }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        OnImpact?.Invoke();
     }
 }

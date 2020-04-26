@@ -18,7 +18,6 @@ public class CameraMaster : MonoBehaviour
 
     private void Start()
     {
-        //FindObjectOfType<InputManager>().onMove;
         player = FindObjectOfType<Player>();
     }
 
@@ -32,7 +31,6 @@ public class CameraMaster : MonoBehaviour
         }
 
         transform.position = Vector3.Lerp(transform.position, followTarget.position + followTarget.localToWorldMatrix.MultiplyVector(positionOffset), lerpStrength);
-        //transform.LookAt(rotation * (lookTarget.position - player.transform.position) + player.transform.position, Vector3.up);
         transform.LookAt(lookTarget);
     }
 
