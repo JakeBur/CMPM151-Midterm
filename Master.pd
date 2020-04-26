@@ -1,9 +1,9 @@
-#N canvas 559 252 1146 564 10;
+#N canvas 457 162 1146 564 10;
 #X text 164 48 1 Set IP Address : network address;
 #X text 164 68 2 Set Ports (sending and listening);
 #X text 164 87 3 Set OSC Addresses (routing osc data;
 #X text 155 26 Key Settings;
-#N canvas 669 259 781 518 oscReceive 1;
+#N canvas 1183 450 781 518 oscReceive 1;
 #X obj 55 184 netreceive -u -b;
 #X msg 78 143 listen 0;
 #X text 152 143 stop listening;
@@ -49,17 +49,17 @@
 #X connect 21 0 22 0;
 #X connect 23 0 24 0;
 #X restore 43 116 pd oscReceive;
-#X obj 47 36 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 47 36 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X msg 47 61 \; pd dsp \$1;
-#N canvas 540 113 1083 664 music 1;
+#N canvas 2042 41 1083 664 music 1;
 #X obj 52 888 osc~;
 #X obj 56 832 mtof;
 #X obj 55 1177 dac~;
 #X floatatom 57 800 5 0 0 0 - - -;
 #X obj 62 1010 *~;
 #X obj 181 810 vsl 15 128 0 0.1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1811 1;
+-1 -1 0 1;
 #X obj 56 944 *~;
 #X obj 115 848 mtof;
 #X floatatom 116 816 5 0 0 0 - - -;
@@ -70,7 +70,7 @@
 #X floatatom 357 901 5 0 0 0 - - -;
 #X obj 351 1086 *~;
 #X obj 492 908 vsl 15 128 0 0.1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1811 1;
+-1 -1 0 1;
 #X obj 351 1051 *~;
 #X obj 410 955 mtof;
 #X floatatom 411 923 5 0 0 0 - - -;
@@ -80,7 +80,7 @@
 #X obj 99 342 % 10;
 #X obj 100 370 select 0 1 2 3 4 5 6 7 8 9;
 #X obj 61 1120 *~;
-#X obj 74 112 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 74 112 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 349 1194 *~;
 #X msg 27 94 0;
@@ -94,7 +94,7 @@
 #X floatatom 817 874 5 0 0 0 - - -;
 #X obj 824 1102 *~;
 #X obj 959 893 vsl 15 128 0 0.1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1811 1;
+-1 -1 0 1;
 #X obj 877 940 mtof;
 #X floatatom 878 908 5 0 0 0 - - -;
 #X obj 822 1223 *~;
@@ -153,21 +153,22 @@ counter without libraries??;
 #X text 77 1029 envelope;
 #X obj 32 67 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 119 46 r stopAll;
+#X obj 119 47 r stopAll;
 #X msg 119 67 0;
-#X obj 270 54 r speed;
-#X obj 265 11 loadbang;
-#X floatatom 331 89 5 0 0 0 - - -;
-#X floatatom 178 93 5 0 0 0 - - -;
-#X obj 230 103 *, f 4;
-#X obj 178 119 -;
-#X obj 230 80 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X msg 178 72 300, f 4;
-#X msg 330 69 50, f 4;
+#X obj 280 82 r speed;
+#X obj 232 36 loadbang;
+#X floatatom 382 112 5 0 0 0 - - -;
+#X floatatom 229 116 5 0 0 0 - - -;
+#X obj 281 126 *, f 4;
+#X obj 229 142 -;
+#X obj 281 103 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 229 95 300, f 4;
+#X msg 381 92 50, f 4;
 #X text 20 627 -----------------------------------------------------------
 ;
 #X text 23 615 Voices below;
+#X text 228 16 tempo control;
 #X connect 0 0 6 0;
 #X connect 1 0 0 0;
 #X connect 3 0 1 0;
@@ -290,10 +291,10 @@ counter without libraries??;
 #X connect 104 0 98 0;
 #X restore 603 47 pd music;
 #X obj 622 79 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 500 1;
+-1 -1 0 1;
 #X obj 618 275 s musicVolume;
 #X obj 528 117 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4600 1;
+-1 -1 0 1;
 #X text 495 92 master volume;
 #X obj 719 275 s collisionVolume;
 #X obj 837 274 s rollVolume;
@@ -305,29 +306,29 @@ counter without libraries??;
 #X obj 620 223 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 723 77 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3000 1;
+-1 -1 0 1;
 #X obj 720 247 *;
 #X obj 721 221 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 840 77 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4800 1;
+-1 -1 0 1;
 #X obj 837 247 *;
 #X obj 838 221 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 932 76 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9700 1;
+-1 -1 0 1;
 #X obj 929 246 *;
 #X obj 930 220 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X text 499 4 Volume settings;
-#N canvas 2073 62 1051 726 landing 1;
+#N canvas 723 187 1051 726 landing 1;
 #X obj 48 618 dac~;
-#X obj 682 322 osc~;
-#X floatatom 681 286 5 0 0 0 - - -;
+#X obj 410 200 osc~;
+#X floatatom 409 164 5 0 0 0 - - -;
 #X floatatom 202 174 5 0 0 0 - - -;
 #X obj 192 214 osc~;
 #X obj 91 420 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1087 1;
+-1 -1 0 1;
 #X obj 51 547 *~;
 #X obj 93 390 r collisionVolume;
 #X obj 57 366 *~;
@@ -339,25 +340,26 @@ counter without libraries??;
 #X obj 119 197 *~;
 #X msg 87 102 seed 10;
 #X msg 154 296 1 10 \, 0.2 10 50 \, 0 50 100;
-#X obj 676 387 *~;
-#X obj 665 724 dac~;
-#X obj 721 521 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1304 1;
-#X obj 677 644 *~;
-#X obj 720 463 r collisionVolume;
-#X obj 720 490 * 1.2;
+#X obj 404 265 *~;
+#X obj 393 602 dac~;
+#X obj 449 399 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 405 522 *~;
+#X obj 448 341 r collisionVolume;
+#X obj 448 368 * 1.2;
 #X text 64 73 mix noise with osc;
-#X msg 683 258 -42;
-#X obj 683 227 loadbang;
-#X obj 751 363 vline~;
-#X msg 759 312 1 10 \, 0.2 10 50 \, 0 50 100;
+#X msg 411 136 -42;
+#X obj 411 105 loadbang;
+#X obj 479 241 vline~;
+#X msg 487 190 1 10 \, 0.2 10 50 \, 0 50 100;
 #X obj 161 253 r impact;
-#X obj 763 259 r impact;
-#X text 666 139 bass layer;
+#X obj 491 137 r impact;
+#X text 397 29 bass layer;
 #X msg 194 80 10;
 #X msg 227 129 -25;
 #X obj 203 53 loadbang;
 #X text 12 9 impact sound;
+#X text 66 29 noise layer;
 #X connect 1 0 17 0;
 #X connect 2 0 1 0;
 #X connect 3 0 4 0;
@@ -393,7 +395,7 @@ counter without libraries??;
 #X connect 33 0 31 0;
 #X connect 33 0 32 0;
 #X restore 699 46 pd landing;
-#N canvas 2192 135 1195 439 roll 1;
+#N canvas 369 447 1195 439 roll 1;
 #X obj 482 101 soundfiler;
 #X obj 483 45 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -439,14 +441,14 @@ counter without libraries??;
 #X connect 19 0 8 0;
 #X connect 19 0 8 1;
 #X restore 826 47 pd roll;
-#N canvas 425 110 1193 778 collect 1;
+#N canvas 436 369 1193 778 collect 1;
 #X floatatom 469 396 5 0 0 0 - - -;
 #X obj 470 495 *~;
 #X obj 219 731 dac~;
 #X obj 659 453 vline~;
 #X text 701 327 volume control;
 #X obj 675 239 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3513 1;
+-1 -1 0 1;
 #X text 50 268 uses a key selector to pick a hert/frequency to play
 ;
 #X text 715 445 using vline to cleanly transition between volume;
