@@ -1,0 +1,73 @@
+#N canvas -8 -8 1920 997 12;
+#X obj 19 21 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X msg 19 46 \; pd dsp \$1;
+#X msg 295 369 0;
+#X obj 293 415 tabplay~ soundData;
+#X obj 264 368 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 330 370 stop;
+#X obj 279 321 metro 1000;
+#X obj 337 273 r loopTime;
+#X obj 229 286 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 337 297 5 0 0 0 - - -;
+#X obj 214 697 dac~;
+#X obj 293 598 *~;
+#X obj 561 419 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 8600 1;
+#X obj 1216 140 soundfiler;
+#X obj 1217 84 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1217 57 loadbang;
+#X floatatom 1216 164 15 0 0 0 - - -;
+#X obj 1216 190 / 44100;
+#X obj 1216 259 * 1000;
+#X floatatom 1216 285 5 0 0 0 - - -;
+#X obj 1217 315 s loopTime;
+#X floatatom 1216 225 5 0 0 0 - - -;
+#X msg 1217 113 read -resize BallRoll.wav soundData;
+#N canvas 212 36 450 300 (subpatch) 0;
+#X array soundData 134951 float 0;
+#X coords 0 1 134950 -1 300 100 1;
+#X restore 1212 387 graph;
+#X obj 814 235 phasor~;
+#X obj 773 330 tabread4~ soundData;
+#X obj 783 450 dac~;
+#X obj 868 292 *~;
+#X obj 623 132 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 1740 1;
+#X obj 820 170 expr 44100/$f1;
+#X floatatom 557 174 5 0 0 0 - - -;
+#X text 597 83 0.326 is normal;
+#X msg 625 206 0.326;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 11 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 0;
+#X connect 6 0 4 0;
+#X connect 7 0 9 0;
+#X connect 8 0 6 0;
+#X connect 9 0 6 1;
+#X connect 11 0 10 0;
+#X connect 12 0 11 1;
+#X connect 13 0 16 0;
+#X connect 14 0 22 0;
+#X connect 15 0 14 0;
+#X connect 16 0 17 0;
+#X connect 16 0 29 0;
+#X connect 16 0 27 1;
+#X connect 17 0 21 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 21 0 18 0;
+#X connect 22 0 13 0;
+#X connect 24 0 27 0;
+#X connect 25 0 26 0;
+#X connect 25 0 26 1;
+#X connect 27 0 25 0;
+#X connect 28 0 24 0;
+#X connect 28 0 30 0;
+#X connect 29 0 24 0;
+#X connect 32 0 28 0;
