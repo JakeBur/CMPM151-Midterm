@@ -1,0 +1,85 @@
+#N canvas 174 23 1072 642 12;
+#X obj 21 19 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X msg 19 46 \; pd dsp \$1;
+#X floatatom 469 396 5 0 0 0 - - -;
+#X obj 470 495 *~;
+#X obj 219 731 dac~;
+#X obj 659 453 vline~;
+#X msg 539 342 100;
+#X text 56 18 dsp on/off control;
+#X text 701 327 volume control;
+#X obj 675 239 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X text 50 268 uses a key selector to pick a hert/frequency to play
+;
+#X text 715 445 using vline to cleanly transition between volume;
+#X text 263 728 using dac to convert audio signal to frequency and
+hertz that we can hear;
+#X text 508 503 multiplying audio signal to the volume value;
+#X obj 376 363 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 428 347 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 467 335 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 503 351 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 544 380 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 119 360 selector object triggers the bangs;
+#X text 257 400 selected value gets displayed;
+#X msg 354 318 60;
+#X msg 451 305 35;
+#X msg 393 316 80;
+#X msg 495 317 50;
+#X obj 424 271 select 0 \, 1 \, 2 \, 3 \, 4;
+#X obj 185 597 *~;
+#X obj 152 537 osc~;
+#X msg 151 485 932;
+#X obj 230 677 *~;
+#X obj 316 688 vline~;
+#X floatatom 151 512 5 0 0 0 - - -;
+#X obj 150 459 loadbang;
+#X obj 470 431 osc~;
+#X text 219 596 combining two osc~ to create a form of synthesizing
+a unique waveform;
+#X text 238 439 it generates music using osc~;
+#X text 10 535 another osc~ sound;
+#X msg 329 648 1 500 \, 0 500 500;
+#X text 379 686 ensures no pop;
+#X obj 429 149 r osccollect;
+#X floatatom 433 207 5 0 0 0 - - -;
+#X text 530 147 gets an input (0-4) from unity thru open sound;
+#X connect 0 0 1 0;
+#X connect 2 0 33 0;
+#X connect 3 0 26 1;
+#X connect 5 0 3 1;
+#X connect 6 0 18 0;
+#X connect 6 0 2 0;
+#X connect 9 0 5 0;
+#X connect 21 0 14 0;
+#X connect 21 0 2 0;
+#X connect 22 0 16 0;
+#X connect 22 0 2 0;
+#X connect 23 0 15 0;
+#X connect 23 0 2 0;
+#X connect 24 0 17 0;
+#X connect 24 0 2 0;
+#X connect 25 0 21 0;
+#X connect 25 1 23 0;
+#X connect 25 2 22 0;
+#X connect 25 3 24 0;
+#X connect 25 6 6 0;
+#X connect 26 0 29 0;
+#X connect 27 0 26 0;
+#X connect 28 0 31 0;
+#X connect 29 0 4 0;
+#X connect 29 0 4 1;
+#X connect 30 0 29 1;
+#X connect 31 0 27 0;
+#X connect 32 0 28 0;
+#X connect 33 0 3 0;
+#X connect 37 0 30 0;
+#X connect 39 0 40 0;
+#X connect 40 0 25 0;
